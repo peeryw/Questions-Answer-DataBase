@@ -1,0 +1,30 @@
+package control;
+
+import java.sql.Connection;
+import java.sql.Statement;
+
+public class DataBase {
+	
+	private Connection con;
+	private Statement stmt;
+	
+	private String url;
+	private String userID;
+	private String password;
+	
+	public DataBase(){
+		try{
+			Class.forName(com.mysql.jdbc.driver);
+		}
+		catch(java.lang.ClassNotFoundException e){
+			System.out.println(e);
+			System.exit(0);
+		}
+	}
+
+	public void addAnswer(String newA, Integer questionID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

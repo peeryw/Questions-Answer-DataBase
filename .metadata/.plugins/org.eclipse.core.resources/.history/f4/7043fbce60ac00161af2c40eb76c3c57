@@ -1,0 +1,71 @@
+package control;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.mysql.jdbc.DatabaseMetaData;
+
+public class DataBase {
+	
+	private Connection con;
+	private Statement stmt;
+	
+	private String url;
+	private String userID;
+	private String password;
+	
+	public DataBase(){
+		try{
+			Class.forName(com.mysql.jdbc.driver);
+		}
+		catch(java.lang.ClassNotFoundException e){
+			System.out.println(e);
+			System.exit(0);
+		}
+		startConnect();
+		try{
+			java.sql.DatabaseMetaData dbm = con.getMetaData();
+			ResultSet tables = dbm.getTables(null, null, "Questions", null);
+			if (!tables.next()){
+				createTables();
+			}
+		}
+			catch (SQLException e){
+				System.out.println(e);
+			}
+		endConnect();
+		}
+
+	
+	private void startConnect() {
+		// TODO Auto-generated method stub
+		try{
+			con = DriverManager.getConnection(url, userID, password);
+			stmt = con.createStatement();
+		}
+		catch (SQLEception e)
+	}
+	
+	private void endConnect() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	private void createTables() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	public void addAnswer(String newA, Integer questionID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
